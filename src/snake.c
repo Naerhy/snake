@@ -1,9 +1,11 @@
-#include "raylib.h"
 #include "snake.h"
 
 int main(void)
 {
-	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "My Snake");
+	t_ny_list* list;
+
+	list = NULL;
+	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake");
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
 	{
