@@ -17,4 +17,18 @@ typedef struct s_bodypart
 	int y;
 } t_bodypart;
 
+typedef enum e_direction
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+} t_direction;
+
+typedef enum e_state
+{
+	WAITING,
+	MOVED
+} t_state;
+
 #endif
