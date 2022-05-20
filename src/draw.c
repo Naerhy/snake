@@ -30,3 +30,9 @@ void draw_snake(t_ny_list* snake)
 		snake = snake->next;
 	}
 }
+
+void draw_apple(int x, int y)
+{
+	DrawRectangle(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE,
+			BLOCK_SIZE, RED);
+}

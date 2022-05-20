@@ -6,6 +6,8 @@ int init_global(t_global* g)
 	g->frames_counter = 0;
 	g->direction = RIGHT;
 	g->state = WAITING;
+	g->apple.x = 5;
+	g->apple.y = 5;
 	return (1);
 }
 
@@ -16,7 +18,7 @@ int init_snake(t_ny_list** snake)
 
 	for (int i = 0; i < 3; i++)
 	{
-		bodypart = create_bodypart(2 - i, 0);
+		bodypart = create_bodypart(3 - i, 1);
 		if (!bodypart)
 			return (0);
 		new_node = ny_list_new(bodypart);

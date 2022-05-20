@@ -54,6 +54,7 @@ typedef struct s_bodypart
 // draw.c
 void draw_background(void);
 void draw_snake(t_ny_list* snake);
+void draw_apple(int x, int y);
 
 // game.c
 void launch_game(t_global* g);
@@ -64,7 +65,8 @@ int init_snake(t_ny_list** snake);
 
 // movement.c
 void get_input_direction(t_global* g);
-void move_snake(t_ny_list** snake, t_direction direction);
+void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple);
+int check_apple_pos(t_apple* apple, t_ny_list* snake);
 
 // snake.c
 void free_bodypart(void* content);
