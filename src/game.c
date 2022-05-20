@@ -12,8 +12,6 @@ void launch_game(t_global* g)
 	if (g->frames_counter >= 15)
 	{
 		move_snake(&g->snake, g->direction, &g->apple);
-		// check if snake has eaten apple
-		// if so spawn new one and increases snake size
 		g->state = WAITING;
 		g->frames_counter = 0;
 	}

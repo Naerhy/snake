@@ -7,7 +7,7 @@ void free_bodypart(void* content)
 	t_bodypart* to_free;
 
 	to_free = (t_bodypart*)content;
-	free(content);
+	free(to_free);
 }
 
 t_bodypart* create_bodypart(int x, int y)
@@ -27,10 +27,10 @@ int main(void)
 {
 	t_global g;
 
-	if (!init_global(&g) || !init_snake(&g.snake))
+	init_global(&g);
+	if (!init_snake(&g.snake))
 	{
-		// call delete global
-		// ny_list_clear(snake, free_bodypart);
+		ny_list_clear(g.snake, free_bodypart);
 		return (1);
 	}
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake");
@@ -41,6 +41,6 @@ int main(void)
 		launch_game(&g);
 	}
 	CloseWindow();
-	// ny_list_clear(snake, free_bodypart);
+	ny_list_clear(g.snake, free_bodypart);
 	return (0);
 }

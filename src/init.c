@@ -1,6 +1,6 @@
 #include "snake.h"
 
-int init_global(t_global* g)
+void init_global(t_global* g)
 {
 	g->snake = NULL;
 	g->frames_counter = 0;
@@ -8,7 +8,6 @@ int init_global(t_global* g)
 	g->state = WAITING;
 	g->apple.x = 5;
 	g->apple.y = 5;
-	return (1);
 }
 
 int init_snake(t_ny_list** snake)

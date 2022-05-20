@@ -60,7 +60,7 @@ void draw_apple(int x, int y);
 void launch_game(t_global* g);
 
 // init.c
-int init_global(t_global* g);
+void init_global(t_global* g);
 int init_snake(t_ny_list** snake);
 
 // movement.c
