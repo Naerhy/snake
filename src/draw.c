@@ -49,7 +49,7 @@ void draw_background(void)
 
 void draw_snake(t_ny_list* snake)
 {
-	t_bodypart* bodypart;
+	t_coords* bodypart;
 
 	while (snake)
 	{

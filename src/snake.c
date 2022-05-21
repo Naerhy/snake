@@ -2,18 +2,18 @@
 
 void free_bodypart(void* content)
 {
-	t_bodypart* bodypart;
+	t_coords* bodypart;
 
-	bodypart = (t_bodypart*)content;
+	bodypart = (t_coords*)content;
 	free(bodypart);
 }
 
 t_ny_list* create_bodypart(int x, int y)
 {
-	t_bodypart* bodypart;
+	t_coords* bodypart;
 	t_ny_list* new_node;
 
-	bodypart = calloc(1, sizeof(t_bodypart));
+	bodypart = calloc(1, sizeof(t_coords));
 	if (!bodypart)
 		return (NULL);
 	bodypart->x = x;
