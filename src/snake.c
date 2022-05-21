@@ -37,8 +37,8 @@ int main(void)
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
 	{
-		g.frames_counter++;
 		launch_game(&g);
+		g.frames_counter++;
 	}
 	CloseWindow();
 	ny_list_clear(g.snake, free_bodypart);

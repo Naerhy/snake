@@ -4,7 +4,6 @@ void get_input_direction(t_global* g)
 {
 	if (g->state == WAITING)
 	{
-		// add state condition => only if state == WAITING??
 		if (IsKeyDown(KEY_UP) && g->direction != DOWN)
 		{
 			g->direction = UP;
@@ -28,7 +27,7 @@ void get_input_direction(t_global* g)
 	}
 }
 
-void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple)
+void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple, t_game_state* game_state)
 {
 	t_bodypart* bodypart;
 	int head_x;
@@ -71,6 +70,7 @@ void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple)
 		ny_list_nth(*snake, ny_list_size(*snake) - 1)->next = NULL;
 		ny_list_delete(last, free_bodypart);
 	}
+	check_death(head_x, head_y, (*snake)->next, game_state);
 }
 
 int check_apple_pos(t_apple* apple, t_ny_list* snake)
@@ -85,4 +85,19 @@ int check_apple_pos(t_apple* apple, t_ny_list* snake)
 		snake = snake->next;
 	}
 	return (1);
+}
+
+void check_death(int x, int y, t_ny_list* snake, t_game_state* game_state)
+{
+	t_bodypart* bodypart;
+
+	if (!x || !y || x == BOARD_WIDTH - 1 || y == BOARD_HEIGHT - 1)
+		*game_state = TITLE_SCREEN;
+	while (snake)
+	{
+		bodypart = snake->content;
+		if (bodypart->x == x && bodypart->y == y)
+			*game_state = TITLE_SCREEN;
+		snake = snake->next;
+	}
 }

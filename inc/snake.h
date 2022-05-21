@@ -16,6 +16,12 @@
 #define WINDOW_WIDTH (BOARD_WIDTH * BLOCK_SIZE)
 #define WINDOW_HEIGHT (BOARD_HEIGHT * BLOCK_SIZE)
 
+typedef enum e_game_state
+{
+	TITLE_SCREEN,
+	GAME_SCREEN
+} t_game_state;
+
 typedef enum e_direction
 {
 	UP,
@@ -39,6 +45,7 @@ typedef struct s_apple
 typedef struct s_global
 {
 	t_ny_list* snake;
+	t_game_state game_state;
 	int frames_counter;
 	t_direction direction;
 	t_state state;
@@ -65,8 +72,9 @@ int init_snake(t_ny_list** snake);
 
 // movement.c
 void get_input_direction(t_global* g);
-void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple);
+void move_snake(t_ny_list** snake, t_direction direction, t_apple* apple, t_game_state* game_state);
 int check_apple_pos(t_apple* apple, t_ny_list* snake);
+void check_death(int x, int y, t_ny_list* snake, t_game_state* game_state);
 
 // snake.c
 void free_bodypart(void* content);

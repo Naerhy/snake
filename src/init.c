@@ -3,6 +3,7 @@
 void init_global(t_global* g)
 {
 	g->snake = NULL;
+	g->game_state = TITLE_SCREEN;
 	g->frames_counter = 0;
 	g->direction = RIGHT;
 	g->state = WAITING;
