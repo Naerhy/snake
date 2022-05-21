@@ -27,12 +27,7 @@ int main(void)
 {
 	t_global g;
 
-	init_global(&g);
-	if (!init_snake(&g.snake))
-	{
-		ny_list_clear(g.snake, free_bodypart);
-		return (1);
-	}
+	g.game_state = TITLE_SCREEN;
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake");
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
