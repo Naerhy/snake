@@ -55,16 +55,13 @@ void draw_apple(int x, int y);
 
 // init.c
 int init_game(t_global* g, t_ny_list** snake);
+t_ny_list* create_bodypart(int x, int y);
 
 // movement.c
 void get_input_direction(t_global* g);
 void move_snake(t_ny_list** snake, t_direction direction, t_coords* apple,
 		t_screen* screen);
 int check_apple_pos(t_coords* apple, t_ny_list* snake);
-void check_death(int x, int y, t_ny_list* snake, t_screen* screen);
-
-// snake.c
-void free_bodypart(void* content);
-t_ny_list* create_bodypart(int x, int y);
+int check_death(int x, int y, t_ny_list* snake);
 
 #endif

@@ -1,32 +1,5 @@
 #include "snake.h"
 
-void free_bodypart(void* content)
-{
-	t_coords* bodypart;
-
-	bodypart = (t_coords*)content;
-	free(bodypart);
-}
-
-t_ny_list* create_bodypart(int x, int y)
-{
-	t_coords* bodypart;
-	t_ny_list* new_node;
-
-	bodypart = calloc(1, sizeof(t_coords));
-	if (!bodypart)
-		return (NULL);
-	bodypart->x = x;
-	bodypart->y = y;
-	new_node = ny_list_new(bodypart);
-	if (!new_node)
-	{
-		free(bodypart);
-		return (NULL);
-	}
-	return (new_node);
-}
-
 int main(void)
 {
 	t_global g;
@@ -40,6 +13,6 @@ int main(void)
 		g.frames_counter++;
 	}
 	CloseWindow();
-	ny_list_clear(g.snake, free_bodypart);
+	ny_list_clear(g.snake, free);
 	return (0);
 }

@@ -25,7 +25,7 @@ void draw_window(t_global* g)
 				WINDOW_HEIGHT / 2, 20, YELLOW);
 		EndDrawing();
 		if (IsKeyDown(KEY_ENTER))
-			init_game(g, &g->snake);
+			init_game(g, &g->snake); // check return value
 	}
 }
 
@@ -49,13 +49,11 @@ void draw_background(void)
 
 void draw_snake(t_ny_list* snake)
 {
-	t_coords* bodypart;
-
 	while (snake)
 	{
-		bodypart = snake->content;
-		DrawRectangle(bodypart->x * BLOCK_SIZE, bodypart->y * BLOCK_SIZE,
-				BLOCK_SIZE, BLOCK_SIZE, GREEN);
+		DrawRectangle(((t_coords*)snake->content)->x * BLOCK_SIZE,
+				((t_coords*)snake->content)->y * BLOCK_SIZE, BLOCK_SIZE,
+				BLOCK_SIZE, GREEN);
 		snake = snake->next;
 	}
 }
