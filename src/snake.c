@@ -1,38 +1,42 @@
-// gcc -Iinc src/snake.c -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 lib/libny.a
-
 #include "snake.h"
 
 void free_bodypart(void* content)
 {
-	t_bodypart* to_free;
+	t_bodypart* bodypart;
 
-	to_free = (t_bodypart*)content;
-	free(to_free);
+	bodypart = (t_bodypart*)content;
+	free(bodypart);
 }
 
-t_bodypart* create_bodypart(int x, int y)
+t_ny_list* create_bodypart(int x, int y)
 {
-	t_bodypart* new;
+	t_bodypart* bodypart;
+	t_ny_list* new_node;
 
-	new = calloc(1, sizeof(t_bodypart));
-	if (!new)
+	bodypart = calloc(1, sizeof(t_bodypart));
+	if (!bodypart)
 		return (NULL);
-	new->x = x;
-	new->y = y;
-	return (new);
+	bodypart->x = x;
+	bodypart->y = y;
+	new_node = ny_list_new(bodypart);
+	if (!new_node)
+	{
+		free(bodypart);
+		return (NULL);
+	}
+	return (new_node);
 }
 
-// only draw every x frames, not every frame??
 int main(void)
 {
 	t_global g;
 
-	g.game_state = TITLE_SCREEN;
+	g.screen = TITLE_SCREEN;
 	InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Snake");
 	SetTargetFPS(60);
 	while (!WindowShouldClose())
 	{
-		launch_game(&g);
+		draw_window(&g);
 		g.frames_counter++;
 	}
 	CloseWindow();

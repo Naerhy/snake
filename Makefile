@@ -1,7 +1,6 @@
 NAME = snake
 
 SRC = src/draw.c \
-	  src/game.c \
 	  src/init.c \
 	  src/movement.c \
 	  src/snake.c
